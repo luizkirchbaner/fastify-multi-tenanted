@@ -1,0 +1,34 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1710610582317,
+      "tag": "0000_curious_firelord",
+      "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1710611644858,
+      "tag": "0001_romantic_shinobi_shaw",
+      "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1710611912393,
+      "tag": "0002_shallow_rick_jones",
+      "breakpoints": false
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1710612563021,
+      "tag": "0003_unknown_freak",
+      "breakpoints": false
+    }
+  ]
+}
