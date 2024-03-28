@@ -29,6 +29,27 @@
       "when": 1710612563021,
       "tag": "0003_unknown_freak",
       "breakpoints": false
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1710720014027,
+      "tag": "0004_brainy_pandemic",
+      "breakpoints": false
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1710720262080,
+      "tag": "0005_breezy_gauntlet",
+      "breakpoints": false
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1710720360683,
+      "tag": "0006_sleepy_deadpool",
+      "breakpoints": false
     }
   ]
 }

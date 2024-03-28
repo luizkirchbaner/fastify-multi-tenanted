@@ -21,8 +21,8 @@ export const users = pgTable('users', {
   name: varchar('name', { length: 256 }).notNull(),
   applicationId: uuid('applicationId').references(() => applications.id),
   password: varchar('password', { length: 256 }).notNull(),
-  createdAt: varchar('created_at', { length: 256 }).notNull(),
-  updatedAt: varchar('updated_at', { length: 256 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 }, (users) => {
   return {
     cpk: primaryKey({columns: [users.email, users.applicationId]}),
@@ -35,8 +35,8 @@ export const roles = pgTable('roles', {
   name: varchar('name', { length: 256 }).notNull(),
   applicationId: uuid('applicationId').references(() => applications.id),
   permissions: text('permissions').array().$type<Array<string>>(),
-  createdAt: varchar('created_at', { length: 256 }).notNull(),
-  updatedAt: varchar('updated_at', { length: 256 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 }, (roles) => {
   return {
     cpk: primaryKey({columns: [roles.name, roles.applicationId]}),
