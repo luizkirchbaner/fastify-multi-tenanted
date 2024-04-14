@@ -1,8 +1,9 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { CreateUserBody } from "./users.schemas";
+import { CreateUserBody, LoginBody } from "./users.schemas";
 import { SYSTEM_ROLES } from "../../config/permissions";
 import { getRoleByName } from "../roles/roles.services";
-import { assignRoleToUser, createUser, getUsersByApplication } from "./users.services";
+import { assignRoleToUser, createUser, getUserByEmail, getUsersByApplication } from "./users.services";
+import jwt from "jsonwebtoken";
 
 export async function createUserHandler(
   request: FastifyRequest<{Body: CreateUserBody}>,
@@ -28,7 +29,6 @@ export async function createUserHandler(
     }
   }
 
-  console.log(roleName)
   const role = await getRoleByName({
     name: roleName,
     applicationId: data.applicationId
@@ -53,4 +53,28 @@ export async function createUserHandler(
   } catch (e) {
 
   }
+}
+
+export async function loginHandler(request: FastifyRequest<{Body: LoginBody}>, reply: FastifyReply) {
+  const { applicationId, email, password } = request.body;
+
+  const user = await getUserByEmail({
+    applicationId,
+    email
+  });
+
+  if (!user) {
+    return reply.code(400).send({
+      message: "Invalid email or password."
+    })
+  }
+
+  const token = jwt.sign({
+    applicationId,
+    email,
+    scopes: user.permissions,
+    id: user.id
+  }, "secret");
+
+  return { token };
 }
