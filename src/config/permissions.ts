@@ -1,6 +1,8 @@
 export const ALL_PERMISSIONS = [
   'posts:write',
   'posts:read',
+  'post:delete',
+  'post:edit-own',
   'users:roles:write',
   'users:roles:delete',
 ] as const;
